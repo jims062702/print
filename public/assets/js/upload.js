@@ -126,15 +126,18 @@ export function initUpload(){
 
   const order = { items: [], note: '' };
 
-  function onChange(){
-    list.innerHTML = '';
-    let total = 0;
-    order.items.forEach(item=>{
-      const row = renderItemRow(item, onChange);
-      list.appendChild(row);
-      total += item.price||0;
-    });
+  function updateTotal(){
+    const total = order.items.reduce((sum, it) => sum + (it.price||0), 0);
     totalEl.textContent = `₱${total.toFixed(2)}`;
+  }
+
+  function renderList(){
+    list.innerHTML = '';
+    order.items.forEach(item => {
+      const row = renderItemRow(item, updateTotal);
+      list.appendChild(row);
+    });
+    updateTotal();
   }
 
   function addFiles(files){
@@ -154,37 +157,9 @@ export function initUpload(){
       item.price = computePrice(item);
       order.items.push(item);
     });
-    onChange();
+    renderList();
   }
 
-  // Rush ID support
-  const RUSH_LABELS = { pkg1: '1x1 (6pcs)', pkg2: '2x2 (6pcs)', pkg3: '1x1 (8pcs) + 2x2 (4pcs)', pkg4: 'Passport (6pcs)' };
-  function addRush(pkgKey, qty){
-    const item = {
-      file: null,
-      name: `Rush ID: ${RUSH_LABELS[pkgKey]}`,
-      type: 'rush',
-      size: 'ID',
-      category: `rushId:${pkgKey}`,
-      colorMode: 'full',
-      paperSize: 'A4',
-      isBackToBack: false,
-      pages: 1,
-      quantity: Math.max(1, parseInt(qty||'1')),
-    };
-    item.price = computePrice(item);
-    order.items.push(item);
-    onChange();
-  }
-
-  document.querySelectorAll('.rush-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const key = btn.getAttribute('data-pkg');
-      const qtyInput = document.getElementById(`rush-qty-${key}`);
-      const qty = qtyInput ? qtyInput.value : '1';
-      addRush(key, qty);
-    });
-  });
 
   drop.addEventListener('dragover', e=>{ e.preventDefault(); drop.style.background='rgba(255,255,255,0.05)'; });
   drop.addEventListener('dragleave', e=>{ drop.style.background='transparent'; });
@@ -205,10 +180,14 @@ export function initUpload(){
       const recent = loadRecent();
       recent.unshift({ id: data.id, createdAt: new Date().toISOString(), items: order.items.map(({name, price})=>({name, price})) });
       saveRecent(recent);
-      alert('Submitted successfully! We will notify the admin.');
-      window.location.href = '/public/index.html';
+      const status = document.getElementById('status');
+      if (status) { status.style.color = '#2ecc71'; status.textContent = 'Submitted successfully! Admin has been notified.'; }
+      // Reset current order state
+      order.items = [];
+      renderList();
     } catch (e) {
-      alert('Error: ' + e.message);
+      const status = document.getElementById('status');
+      if (status) { status.style.color = '#ff5c7a'; status.textContent = 'Error: ' + e.message; }
     } finally {
       submitBtn.disabled = false; submitBtn.textContent = 'Submit Request';
     }

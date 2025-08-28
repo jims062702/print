@@ -38,6 +38,7 @@
         <div>
           <div class="total" id="total">₱0.00</div>
           <button class="btn primary" id="submit">Submit Request</button>
+          <div id="status" style="margin-top:8px; color:var(--muted)"></div>
         </div>
       </div>
       <div style="margin-top:12px; color:var(--muted)">
@@ -48,35 +49,14 @@
     <section style="margin-top:30px;">
       <h2>Rush ID Packages</h2>
       <div class="card">
-        <div class="u-row" style="justify-content: space-between;">
-          <div>Package 1: 1x1 (6pcs) — ₱35.00</div>
-          <div>
-            Qty <input id="rush-qty-pkg1" type="number" min="1" value="1" style="width:70px; margin:0 8px;">
-            <button class="btn rush-btn" data-pkg="pkg1">Add</button>
-          </div>
-        </div>
-        <div class="u-row" style="justify-content: space-between; margin-top:8px;">
-          <div>Package 2: 2x2 (6pcs) — ₱40.00</div>
-          <div>
-            Qty <input id="rush-qty-pkg2" type="number" min="1" value="1" style="width:70px; margin:0 8px;">
-            <button class="btn rush-btn" data-pkg="pkg2">Add</button>
-          </div>
-        </div>
-        <div class="u-row" style="justify-content: space-between; margin-top:8px;">
-          <div>Package 3: 1x1 (8pcs) + 2x2 (4pcs) — ₱50.00</div>
-          <div>
-            Qty <input id="rush-qty-pkg3" type="number" min="1" value="1" style="width:70px; margin:0 8px;">
-            <button class="btn rush-btn" data-pkg="pkg3">Add</button>
-          </div>
-        </div>
-        <div class="u-row" style="justify-content: space-between; margin-top:8px;">
-          <div>Package 4: Passport size (6pcs) — ₱50.00</div>
-          <div>
-            Qty <input id="rush-qty-pkg4" type="number" min="1" value="1" style="width:70px; margin:0 8px;">
-            <button class="btn rush-btn" data-pkg="pkg4">Add</button>
-          </div>
-        </div>
-        <div style="color:var(--muted); margin-top:10px;">Note: For Rush ID, you can upload any image as reference, or visit our shop for a photo. Admin will be notified upon submission.</div>
+        <p>We offer fast ID printing with the following packages. Visit the shop for photo capture or upload a reference image when submitting any print request. Admin will be notified upon submission.</p>
+        <ul>
+          <li>Package 1: 1x1 (6pcs) — ₱35.00</li>
+          <li>Package 2: 2x2 (6pcs) — ₱40.00</li>
+          <li>Package 3: 1x1 (8pcs) + 2x2 (4pcs) — ₱50.00</li>
+          <li>Package 4: Passport size (6pcs) — ₱50.00</li>
+        </ul>
+        <p style="color:var(--muted)">Tip: Add an image file if you already have a photo. Otherwise, proceed and coordinate with the admin for on-site capture.</p>
       </div>
     </section>
 
