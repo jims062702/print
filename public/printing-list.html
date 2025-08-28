@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Printing Services • Printing List</title>
+  <link rel="stylesheet" href="/public/assets/css/style.css" />
+  <style>
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+    th { background: rgba(255,255,255,0.04); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo"><img src="https://api.iconify.design/solar:printer-line-duotone.svg" alt="logo" /><span>Printing Services</span></div>
+      <nav class="nav-links">
+        <a href="/public/index.html">Home</a>
+        <a href="/public/printing-list.html">Printing List</a>
+        <a href="/public/contact.html">Contact Us</a>
+        <a class="cta" href="/public/print-now.html">Print Now</a>
+        <a href="/admin/index.php">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 40px 0;">
+    <h1>Price List</h1>
+    <p class="muted">All prices in ₱ (PHP). Back-to-back printing has extra charges listed below.</p>
+
+    <h2>Text Only</h2>
+    <table>
+      <thead><tr><th>Option</th><th>A4</th><th>Short</th><th>Long</th></tr></thead>
+      <tbody>
+        <tr><td>Black & White</td><td>2.00</td><td>2.00</td><td>3.00</td></tr>
+        <tr><td>Partially Colored</td><td>3.00</td><td>3.00</td><td>4.00</td></tr>
+        <tr><td>Whole Page Colored</td><td>4.00</td><td>4.00</td><td>5.00</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="margin-top:30px;">With Image</h2>
+    <table>
+      <thead><tr><th>Option</th><th>A4</th><th>Short</th><th>Long</th></tr></thead>
+      <tbody>
+        <tr><td>Black & White</td><td>4.00</td><td>4.00</td><td>5.00</td></tr>
+        <tr><td>Partially Colored</td><td>5.00</td><td>5.00</td><td>8.00</td></tr>
+        <tr><td>Whole Page Colored</td><td>8.00</td><td>8.00</td><td>10.00</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="margin-top:30px;">Image Only</h2>
+    <table>
+      <thead><tr><th>Option</th><th>A4</th><th>Short</th><th>Long</th></tr></thead>
+      <tbody>
+        <tr><td>Black & White</td><td>5.00</td><td>5.00</td><td>8.00</td></tr>
+        <tr><td>Half Page Colored</td><td>6.00</td><td>6.00</td><td>8.00</td></tr>
+        <tr><td>Whole Page Colored</td><td>8.00</td><td>8.00</td><td>10.00</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="margin-top:30px;">Photocopy</h2>
+    <table>
+      <thead><tr><th>Option</th><th>A4</th><th>Short</th><th>Long</th></tr></thead>
+      <tbody>
+        <tr><td>Black & White</td><td>2.00</td><td>2.00</td><td>3.00</td></tr>
+        <tr><td>Partially Colored</td><td>5.00</td><td>5.00</td><td>6.00</td></tr>
+        <tr><td>Whole Page Colored</td><td>7.00</td><td>7.00</td><td>8.00</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="margin-top:30px;">Back-to-Back Extra</h2>
+    <table>
+      <thead><tr><th>Mode</th><th>Extra</th></tr></thead>
+      <tbody>
+        <tr><td>Black & White</td><td>+1.00</td></tr>
+        <tr><td>Partially Colored</td><td>+2.00</td></tr>
+        <tr><td>Whole Page Colored</td><td>+2.00</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="margin-top:30px;">Rush ID Packages</h2>
+    <table>
+      <thead><tr><th>Package</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr><td>1x1 (6pcs)</td><td>35.00</td></tr>
+        <tr><td>2x2 (6pcs)</td><td>40.00</td></tr>
+        <tr><td>1x1 (8pcs) + 2x2 (4pcs)</td><td>50.00</td></tr>
+        <tr><td>Passport size (6pcs)</td><td>50.00</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Printing Services
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+

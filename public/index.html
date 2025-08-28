@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Printing Services • Home</title>
+  <link rel="stylesheet" href="/public/assets/css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo"><img src="https://api.iconify.design/solar:printer-line-duotone.svg" alt="logo" /><span>Printing Services</span></div>
+      <nav class="nav-links">
+        <a href="/public/index.html">Home</a>
+        <a href="/public/printing-list.html">Printing List</a>
+        <a href="/public/contact.html">Contact Us</a>
+        <a class="cta" href="/public/print-now.html">Print Now</a>
+        <a href="/admin/index.php">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container hero">
+    <div class="hero-grid">
+      <div>
+        <h1>Fast, Affordable, and Quality Printing</h1>
+        <p>Upload documents or images, customize options, and we’ll notify the admin instantly. Clean UI, transparent pricing, and quick turnaround.</p>
+        <div class="actions">
+          <a class="btn primary" href="/public/print-now.html">Print Now</a>
+          <a class="btn" href="/public/printing-list.html">View Price List</a>
+        </div>
+        <div class="cards">
+          <div class="card"><h3>Documents</h3><p>DOCX, PDF with B&W or color options</p></div>
+          <div class="card"><h3>Images</h3><p>High-quality color prints and IDs</p></div>
+          <div class="card"><h3>Photocopy</h3><p>Single or back-to-back</p></div>
+        </div>
+      </div>
+      <div class="tilt-card">
+        <div class="floating"></div>
+        <img src="https://images.unsplash.com/photo-1537449495386-6244f3ba60e3?q=80&w=1200&auto=format&fit=crop" alt="Printer" style="width:100%; border-radius:12px;" />
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Printing Services
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Printing Services • Print Now</title>
+  <link rel="stylesheet" href="/public/assets/css/style.css" />
+  <script type="module">
+    import { initUpload } from '/public/assets/js/upload.js';
+    window.addEventListener('DOMContentLoaded', initUpload);
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo"><img src="https://api.iconify.design/solar:printer-line-duotone.svg" alt="logo" /><span>Printing Services</span></div>
+      <nav class="nav-links">
+        <a href="/public/index.html">Home</a>
+        <a href="/public/printing-list.html">Printing List</a>
+        <a href="/public/contact.html">Contact Us</a>
+        <a class="cta" href="/public/print-now.html">Print Now</a>
+        <a href="/admin/index.php">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 40px 0;">
+    <h1>Print Now</h1>
+    <div class="upload-wrapper">
+      <div id="reminder" style="margin-bottom:10px; color:var(--muted)"></div>
+      <div class="u-drop" id="drop">
+        Drop files here or click to select (DOCX, PDF, images)
+        <input type="file" id="file-input" multiple accept=".doc,.docx,.pdf,image/*" style="display:none" />
+      </div>
+      <div class="u-list" id="list"></div>
+      <div class="u-row" style="justify-content: space-between; margin-top: 12px;">
+        <textarea id="note" placeholder="Additional instructions (optional)" style="width:60%; height:60px; background:rgba(255,255,255,0.03); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:8px"></textarea>
+        <div>
+          <div class="total" id="total">₱0.00</div>
+          <button class="btn primary" id="submit">Submit Request</button>
+        </div>
+      </div>
+      <div style="margin-top:12px; color:var(--muted)">
+        Guide: Choose printing type, color mode, and paper size per file. Set quantity and pages. For back-to-back, toggle the option. Prices auto-update.
+      </div>
+    </div>
+
+    <section style="margin-top:30px;">
+      <h2>Rush ID Packages</h2>
+      <div class="card">
+        <div class="u-row" style="justify-content: space-between;">
+          <div>Package 1: 1x1 (6pcs) — ₱35.00</div>
+          <div>
+            Qty <input id="rush-qty-pkg1" type="number" min="1" value="1" style="width:70px; margin:0 8px;">
+            <button class="btn rush-btn" data-pkg="pkg1">Add</button>
+          </div>
+        </div>
+        <div class="u-row" style="justify-content: space-between; margin-top:8px;">
+          <div>Package 2: 2x2 (6pcs) — ₱40.00</div>
+          <div>
+            Qty <input id="rush-qty-pkg2" type="number" min="1" value="1" style="width:70px; margin:0 8px;">
+            <button class="btn rush-btn" data-pkg="pkg2">Add</button>
+          </div>
+        </div>
+        <div class="u-row" style="justify-content: space-between; margin-top:8px;">
+          <div>Package 3: 1x1 (8pcs) + 2x2 (4pcs) — ₱50.00</div>
+          <div>
+            Qty <input id="rush-qty-pkg3" type="number" min="1" value="1" style="width:70px; margin:0 8px;">
+            <button class="btn rush-btn" data-pkg="pkg3">Add</button>
+          </div>
+        </div>
+        <div class="u-row" style="justify-content: space-between; margin-top:8px;">
+          <div>Package 4: Passport size (6pcs) — ₱50.00</div>
+          <div>
+            Qty <input id="rush-qty-pkg4" type="number" min="1" value="1" style="width:70px; margin:0 8px;">
+            <button class="btn rush-btn" data-pkg="pkg4">Add</button>
+          </div>
+        </div>
+        <div style="color:var(--muted); margin-top:10px;">Note: For Rush ID, you can upload any image as reference, or visit our shop for a photo. Admin will be notified upon submission.</div>
+      </div>
+    </section>
+
+    <section style="margin-top:30px;">
+      <h2>Recent Uploads (local)</h2>
+      <div id="recent"></div>
+      <script type="module">
+        const key = 'ps_recent_uploads';
+        const el = document.getElementById('recent');
+        try{
+          const items = JSON.parse(localStorage.getItem(key)||'[]');
+          if(!items.length){ el.innerHTML = '<p style="color:var(--muted)">No recent uploads.</p>'; }
+          else {
+            const ul = document.createElement('ul');
+            items.forEach(o=>{
+              const li = document.createElement('li');
+              const total = o.items.reduce((s,i)=>s+(i.price||0),0);
+              li.textContent = `#${o.id} • ${new Date(o.createdAt).toLocaleString()} • Total ₱${total.toFixed(2)}`;
+              ul.appendChild(li);
+            });
+            el.appendChild(ul);
+          }
+        }catch(e){ el.textContent = 'Unable to read.'; }
+      </script>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Printing Services
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+

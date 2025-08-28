@@ -1,0 +1,10 @@
+{
+  "name": "printing/printing-services-system",
+  "description": "Two-sided printing services system with client and admin",
+  "type": "project",
+  "require": {
+    "phpmailer/phpmailer": "^6.9"
+  },
+  "minimum-stability": "stable",
+  "license": "MIT"
+}
